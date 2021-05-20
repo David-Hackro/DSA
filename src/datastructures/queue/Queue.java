@@ -1,75 +1,67 @@
-package datastructures.queue;
 
-public class Queue {
-
-    int array[];
+class Queue {
+    int[] items;
+    int size;
     int front;
     int rear;
-    int size;
 
-    Queue(int s) {
-        size = s;
-        array = new int[size];
+
+    Queue() {
+        size = 5;
+        items = new int[size];
         front = -1;
         rear = -1;
     }
 
     boolean isFull() {
-        if (front == 0 && rear == size - 1) {
-            return true;
-        }
-
-        return false;
+        return front == 0 && rear == size - 1;
     }
+
 
     boolean isEmpty() {
-        if (front == -1) {
-            return true;
-        }
-
-        return false;
+        return front == -1;
     }
 
-    void enQueue(int element) {
+    void enQueue(int value) {
         if (isFull()) {
-            System.out.println("Queue Full");
+            System.out.println("the queue is full");
         } else {
             if (front == -1) {
                 front = 0;
             }
 
             rear++;
-            array[rear] = element;
+            items[rear] = value;
         }
     }
 
     int deQueue() {
         if (isEmpty()) {
+            System.out.println("The queue is empty");
+
             return -1;
         }
 
-        int element = array[front];
+        int val = items[front];
+
         if (front >= rear) {
             front = -1;
-            rear = -1;
+
         } else {
             front++;
         }
 
-        return element;
+        return val;
     }
 
-
     public static void main(String[] args) {
-        int size = 4;
-        Queue queue = new Queue(size);
+        Queue queue = new Queue();
+        queue.enQueue(1);
         queue.enQueue(2);
-        queue.enQueue(4);
-        queue.enQueue(6);
-        queue.enQueue(8);
-        
-        for (int i = 0; i < size; i++) {
-            System.out.println(queue.deQueue());
-        }
+        queue.enQueue(3);
+
+        System.out.println(queue.deQueue());
+        System.out.println(queue.deQueue());
+        System.out.println(queue.deQueue());
     }
 }
