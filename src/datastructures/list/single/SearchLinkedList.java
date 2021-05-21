@@ -1,8 +1,8 @@
-package datastructures.list;
+package datastructures.list.single;
 
-import datastructures.list.LinkedList.Node;
+import datastructures.list.single.LinkedList.Node;
 
-public class SearchLinkenList {
+public class SearchLinkedList {
 
     public static void main(String[] args) {
         LinkedList list = new LinkedList();

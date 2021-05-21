@@ -1,7 +1,7 @@
-package datastructures.list;
-import datastructures.list.LinkedList.Node;
+package datastructures.list.single;
+import datastructures.list.single.LinkedList.Node;
 
-class LinkedListStructure {
+class LinkendListStructure {
 
     public static void printList(Node node) {
 

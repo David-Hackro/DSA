@@ -1,7 +1,7 @@
-package datastructures.list;
-import datastructures.list.LinkedList.Node;
+package datastructures.list.single;
+import datastructures.list.single.LinkedList.Node;
 
-class ReverseLinkenList {
+class ReverseLinkedList {
 
     public static Node fullLinkenList(Node head) {
         Node first = new Node(1);

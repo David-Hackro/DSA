@@ -1,8 +1,8 @@
-package datastructures.list;
+package datastructures.list.single;
 
-import static datastructures.list.LinkedList.*;
+import static datastructures.list.single.LinkedList.*;
 
-public class InsertLinkenList {
+public class InsertLinkedList {
 
     public static void main(String[] args) {
         LinkedList list = new LinkedList();

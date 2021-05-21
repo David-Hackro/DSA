@@ -1,6 +1,6 @@
-package datastructures.list;
+package datastructures.list.single;
 
-import datastructures.list.LinkedList.Node;
+import datastructures.list.single.LinkedList.Node;
 
 public class PalindromeLinkenList {
 

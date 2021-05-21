@@ -1,4 +1,4 @@
-package datastructures.list;
+package datastructures.list.single;
 
 class DeleteLinkedList {
 
