@@ -1,73 +1,109 @@
 package datastructures.heap;
+
 import java.util.ArrayList;
 
-public class Heap {
+class Heap {
+    /*
 
-    static void heapify(ArrayList<Integer> hT, int i) {
+        - Start from the first index of non-leaf node whose index is given by n/2 - 1.
+        - Set current element i as largest.
+        - The index of left child is given by 2i + 1 and the right child is given by 2i + 2.
+        If leftChild is greater than currentElement (i.e. element at ith index), set leftChildIndex as largest.
 
-        int size = hT.size();
+        - If rightChild is greater than element in largest, set rightChildIndex as largest.
+        - Swap largest with currentElement
+
+
+    */
+    static void heapify(ArrayList<Integer> ht, int i) {
+        int size = ht.size();
+
+        //Set current element i as largest
         int largest = i;
+
+        //(2i + 1)
         int l = 2 * i + 1;
+        //(2i + 2)
         int r = 2 * i + 2;
 
-        if (l < size && hT.get(l) > hT.get(largest)) {
+        if (l < size && ht.get(l) > ht.get(largest)) {
             largest = l;
-        } else if (r < size && hT.get(r) > hT.get(largest)) {
+        }
+
+        if (r < size && ht.get(r) > ht.get(largest)) {
             largest = r;
         }
 
         if (largest != i) {
-            int temp = hT.get(largest);
-            hT.set(largest, hT.get(i));
-            hT.set(i, temp);
+            int temp = ht.get(largest);
+            ht.set(largest, ht.get(i));
+            ht.set(i, temp);
 
-            heapify(hT, largest);
+            heapify(ht, largest);
         }
     }
 
+    /*
+    If there is no node,
+      create a newNode.
+    else (a node is already present)
+      insert the newNode at the end (last node from left to right.)
 
-    void insert(ArrayList<Integer> hT, int newNum) {
-        int size = hT.size();
+    heapify the array
+    */
+    static void insert(ArrayList<Integer> ht, int newNum) {
+        int size = ht.size();
+
         if (size == 0) {
-            hT.add(newNum);
+            ht.add(newNum);
         } else {
-            hT.add(newNum);
-
-            for (int j = size / 2 - 1; j >= 0; j--) {
-                heapify(hT, j);
+            ht.add(newNum);
+            for (int i = size / 2 - 1; i >= 0; i--) {
+                heapify(ht, i);
             }
         }
     }
 
-    static void delete(ArrayList<Integer> hT, int num) {
-        int size = hT.size();
+
+	/*
+	If nodeToBeDeleted is the leafNode
+	  remove the node
+	Else swap nodeToBeDeleted with the lastLeafNode
+	  remove noteToBeDeleted
+
+	heapify the array
+	*/
+
+
+    static void delete(ArrayList<Integer> ht, int num) {
+        int size = ht.size();
         int i;
 
         for (i = 0; i < size; i++) {
-            if (num == hT.get(i)) {
+            if (num == ht.get(i)) {
                 break;
             }
         }
 
-        int temp = hT.get(i);
-        hT.set(i, hT.get(size - 1));
-        hT.set(size - 1, temp);
+        int temp = ht.get(i);
+        ht.set(i, ht.get(size - 1));
+        ht.set(size - 1, temp);
 
-        hT.remove(size - 1);
+        ht.remove(size - 1);
+
 
         for (int j = size / 2 - 1; j >= 0; j--) {
-            heapify(hT, j);
+            heapify(ht, j);
         }
     }
 
-    void printArray(ArrayList<Integer> array, int size) {
+    static void printArray(ArrayList<Integer> array, int size) {
         for (Integer i : array) {
             System.out.println(i);
         }
-        System.out.println();
     }
 
-    public static void main(String[] args) {
+    public static void main(String args[]) {
         ArrayList<Integer> array = new ArrayList<Integer>();
         int size = array.size();
 
@@ -79,13 +115,14 @@ public class Heap {
         h.insert(array, 5);
         h.insert(array, 2);
 
-
-        System.out.println("Max-Heap array");
-        h.printArray(array, size);
+        System.out.println("Max-Heap array ");
+        printArray(array, size);
 
         h.delete(array, 4);
         System.out.println("After deleting an element: ");
-        h.printArray(array, size);
+        printArray(array, size);
+
 
     }
+
 }
